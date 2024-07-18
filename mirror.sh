@@ -21,7 +21,7 @@ then
     OS=Linux
     ARCH=x86_64
     curl -sL "https://github.com/google/go-containerregistry/releases/download/${VERSION}/go-containerregistry_${OS}_${ARCH}.tar.gz" > go-containerregistry.tar.gz
-    tar -zxvf go-containerregistry.tar.gz -C /usr/local/bin/ crane
+    sudo tar -zxvf go-containerregistry.tar.gz -C /usr/local/bin/ crane
 fi
 
 # Read the file line by line
@@ -42,7 +42,7 @@ do
 
   # Crane copy the image to the private repository
   echo "Copying $line to $2/$image"
-  crane copy "$line" "$2"/"$image"
+  crane copy "$line" "$2"/"$image" || exit 1
   echo "Done copying $line to $2/$image"
 
 done < "$1"
