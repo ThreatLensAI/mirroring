@@ -31,8 +31,8 @@ pipeline {
                         --build-arg BASEIMAGETAG=$postgresqlImageTag \
                         --platform linux/amd64,linux/arm64 \
                         --builder multiarch \
-                        -t $imageRepo/$postgresqlImageName:latest \
-                        -t $imageRepo/$postgresqlImageName:$postgresqlImageTag \
+                        -t $registryRepository/$postgresqlImageName:latest \
+                        -t $registryRepository/$postgresqlImageName:$postgresqlImageTag \
                         -f Dockerfile.postgresql \
                         --push \
                         .
